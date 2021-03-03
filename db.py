@@ -9,7 +9,7 @@ def connect_db():
         host="localhost",
         port=3306
         )
-        print("Connected")
+        print("Connected to db successfully")
     except Exception as e:
         print(e)
 
