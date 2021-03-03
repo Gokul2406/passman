@@ -13,5 +13,5 @@ def connect_db():
     except Exception as e:
         print(e)
 
-connect_db()
-
+if __name__ == "__main__":
+    connect_db()
