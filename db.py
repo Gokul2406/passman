@@ -26,9 +26,13 @@ def add_masterpassword():
         conn.close()
 
     else:
-        for r in masterpassword:
-            print(r)
-        
+        user_masterpassword = input("What is the master password: ")
+        hashed_user_masterpassword = str.join(user_masterpassword, random_text_mp)
+        for master_tuple in masterpassword:
+            for m in master_tuple:
+                if m == hashed_user_masterpassword:
+                    print("Successfully logged in")
+                 
 
 add_masterpassword()
 
