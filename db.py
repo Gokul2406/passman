@@ -12,18 +12,21 @@ print("Connected to db successfully")
 cur = conn.cursor()
  
 def add_master_password():       
-    table = cur.execute("SELECT * FROM MasterPassword;")
-    if table == None:
-        
-        random_words = input("Type some random words: ") 
-        sql = f"""INSERT INTO randomkey (randomkey) VALUES ("{random_words}")"""
-        cur.execute(sql)
-        conn.commit()
-        conn.close()
-        print("Successfully added random words")
-        master_password = input("Type the new master password: ")
+    randomkey_table = cur.execute("SELECT * FROM randomkey;")
+    print("Hello")
+    randomkey = cur.fetchall()
+    print(randomkey)
+    for r in randomkey:
+        if r is None:  
+            random_words = input("Type some random words: ") 
+            sql = f"""INSERT INTO randomkey (randomkey) VALUES ("{random_words}")"""
+            cur.execute(sql)
+            conn.commit()
+            conn.close()
+            print("Successfully added random words")
 
-        print(str.join(random_words, master_password)) 
-   
+        elif randomkey is not None:
+            print("Random key is present")
+
 add_master_password()
 
